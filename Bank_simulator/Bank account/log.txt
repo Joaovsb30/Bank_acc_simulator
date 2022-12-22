@@ -1,0 +1,5 @@
+Olá Dani seu saldo atual é de R$ 0
+Deposito de R$ 10000 realizado com sucesso. Saldo atual: R$ 10000
+Saque de R$ 5000 realizado com sucesso. Saldo atual: R$ 5000
+Deposito de R$ 5000 realizado com sucesso. Saldo atual: R$ 5000
+Transferencia de R$ 5000 realizada com sucesso, de Dani para João
