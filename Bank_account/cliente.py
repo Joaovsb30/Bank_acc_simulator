@@ -13,11 +13,14 @@ class Cliente(Pessoa):
         super().__init__(nome) #nome herdado de pessoa, não precisava, foi p/ praticar
         self._agencia = agencia
         self._conta = conta
-        if os.path.exists(PATH_SALDO): #verifica se o endereço existe (modulo: OS)
-            self.__saldo = self.carregar_saldo() #True: saldo vai receber o metodo carregar_saldo que retorna valor do arquivi json
-        else:
-            self.__saldo = saldo #False: retorna o saldo do metodo construtor 0 por padrão ou informado na instancia
-
+        try: # try verifica se o arquivo json não esta vazio, elimina essa exceção
+            if os.path.exists(PATH_SALDO): #verifica se o endereço existe (modulo: OS)
+                self.__saldo = self.carregar_saldo() #True: saldo vai receber o metodo carregar_saldo que retorna valor do arquivi json
+            else:
+                self.__saldo = saldo #False: retorna o saldo do metodo construtor 0 por padrão ou informado na instancia
+        except json.decoder.JSONDecodeError:
+            self.__saldo = 0
+            
     def mostrar_saldo(self): # mostra saldo e o salva no arquivo json
         self.salvar_saldo()
         msg = f'Olá {self.nome} seu saldo atual é de R$ {self.__saldo}'
