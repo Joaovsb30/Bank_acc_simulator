@@ -9,7 +9,7 @@ class Pessoa:
 
 class Cliente(Pessoa):
 
-    def __init__(self, nome, agencia, conta, saldo=0) -> None:
+    def __init__(self, nome, agencia, conta, saldo=0) -> None: # Só é possível adicionar saldo como parametro se o arquivo json ainda não existir, ou seja, só é possível adiciar saldo durante a criação da instância pela primeira vez
         super().__init__(nome) #nome herdado de pessoa, não precisava, foi p/ praticar
         self._agencia = agencia
         self._conta = conta
@@ -20,7 +20,7 @@ class Cliente(Pessoa):
                 self.__saldo = saldo #False: retorna o saldo do metodo construtor 0 por padrão ou informado na instancia
         except json.decoder.JSONDecodeError:
             self.__saldo = 0
-            
+
     def mostrar_saldo(self): # mostra saldo e o salva no arquivo json
         self.salvar_saldo()
         msg = f'Olá {self.nome} seu saldo atual é de R$ {self.__saldo}'
