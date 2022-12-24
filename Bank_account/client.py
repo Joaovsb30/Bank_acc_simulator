@@ -67,21 +67,22 @@ class Customer(People):
         self.log_file(msg)
         return msg
     
-    # Returns value saved in json file
-    def load_balance(self):
-        with open(PATH_BALANCE, 'r') as file:
-            self.balance = json.load(file)
-            return self.balance
-
     # Salve in the json file the current balance value
     def salve_balance(self):
         with open(PATH_BALANCE, 'w') as file:
-            json.dump(self.__balance, file)
+            s = {"name" : self.name, "balance" : self.__balance}
+            json.dump(s, file)
+    
+    # Returns value saved in json file
+    def load_balance(self):
+        with open(PATH_BALANCE, 'r') as file:
+            data = json.load(file)
+            if data["name"] == self.name:
+                self.balance = data["balance"]
+            return self.balance
     
     # Creates a log with the actions performed
     def log_file(self, msg):
         with open(PATH_LOG, 'a', encoding='utf8') as file:
-            msg = f'{self.name}: {msg}'
             file.write(msg)
             file.write('\n')
-
