@@ -1,7 +1,7 @@
-from cliente import Cliente
+from client import Customer
 
-John = Cliente('John', '6630', '09095-6', 1000000)
-Dany = Cliente('Dany', '6630', '05055-6')
+John = Customer('John', '6630', '09095-6',10000)
+Dany = Customer('Dany', '6630', '05055-6')
 
-print(John.mostrar_saldo())
-print(John.depositar(5000))
+print(John.show_balance())
+print(John.deposit(5000))
