@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 PATH_BALANCE = Path(__file__).parent/'balance.json'
 PATH_LOG = Path(__file__).parent/'log.txt'
+
 class People:
     def __init__(self, name) -> None:
         self.name = name
@@ -66,12 +67,13 @@ class Customer(People):
         msg = f'Transfer failed. Insufficient funds'
         self.log_file(msg)
         return msg
-    
+
     # Salve in the json file the current balance value
     def salve_balance(self):
+        clients = []
+        clients.append({'name': self.name, 'balance' : self.balance})
         with open(PATH_BALANCE, 'w') as file:
-            s = {"name" : self.name, "balance" : self.__balance}
-            json.dump(s, file)
+            json.dump(clients, file)
     
     # Returns value saved in json file
     def load_balance(self):
