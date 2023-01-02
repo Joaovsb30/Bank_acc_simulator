@@ -1,2 +1,4 @@
 Dany, Deposit of $1000 successfully completed. Current balance: $ 1000
 Dany, Deposit of $1000 successfully completed. Current balance: $ 2000
+Dany, Deposit of $1000 successfully completed. Current balance: $ 3000
+Dany, Deposit of $2000 successfully completed. Current balance: $ 5000
